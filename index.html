@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multilingual Website</title>
+</head>
+<body>
+    <div>
+        <label for="languageSwitcher">Choose a language:</label>
+        <select id="languageSwitcher" onchange="switchLanguage()">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+    <h1 id="title">Welcome</h1>
+    <p id="description">This is a sample text.</p>
+
+    <script>
+        const texts = {
+            en: {
+                title: "Welcome",
+                description: "This is a sample text."
+            },
+            es: {
+                title: "Bienvenido",
+                description: "Este es un texto de muestra."
+            }
+        };
+
+        function switchLanguage() {
+            const selectedLanguage = document.getElementById('languageSwitcher').value;
+            document.getElementById('title').innerText = texts[selectedLanguage].title;
+            document.getElementById('description').innerText = texts[selectedLanguage].description;
+        }
+
+        // On page load, set the default language
+        window.onload = function() {
+            const savedLanguage = 'en';
+            document.getElementById('languageSwitcher').value = savedLanguage;
+            switchLanguage();
+        }
+    </script>
+</body>
+</html>
